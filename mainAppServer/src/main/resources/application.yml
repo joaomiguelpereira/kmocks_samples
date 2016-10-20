@@ -1,0 +1,11 @@
+#Default
+server:
+  port: 8083
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+kafka:
+  boostrapUri: localhost:9093
+  topic: theTopicName
