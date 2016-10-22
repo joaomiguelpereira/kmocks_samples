@@ -24,7 +24,6 @@
     <modules>
         <module>mainApp</module>
         <module>mainAppServer</module>
-        <module>integration</module>
     </modules>
 
     <dependencyManagement>
