@@ -28,6 +28,10 @@
         </dependency>
         <dependency>
             <groupId>com.bskyb.internettv.kafka-in-test</groupId>
+            <artifactId>kafka-in-test-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bskyb.internettv.kafka-in-test</groupId>
             <artifactId>kafka-in-test-api</artifactId>
         </dependency>
         <dependency>

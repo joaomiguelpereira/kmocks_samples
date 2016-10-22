@@ -26,7 +26,7 @@ public class MainApplicationTest {
 
 
     //System under test
-    private MainApplication sut;
+    private ProducerComponent sut;
 
     //Creates a default driver with kafka listening in localhost:5001 and zookeeper listening in localhost:5000
     private static KafkaDriver kafkaDriver = new KafkaDriverBuilder().build();
@@ -46,7 +46,7 @@ public class MainApplicationTest {
 
     @Before
     public void setupSUT() {
-        sut = new MainApplication("localhost:5001", TOPIC);
+        sut = new ProducerComponent("localhost:5001", TOPIC);
     }
 
     @Test

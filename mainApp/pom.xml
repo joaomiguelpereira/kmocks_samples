@@ -23,6 +23,10 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.bskyb.internettv.kafka-in-test</groupId>
             <artifactId>kafka-in-test-local</artifactId>
         </dependency>

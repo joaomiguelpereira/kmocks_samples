@@ -18,6 +18,7 @@
         <assertj-core.version>2.4.1</assertj-core.version>
         <spring-boot.version>1.4.0.RELEASE</spring-boot.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
+        <lombok.version>1.16.10</lombok.version>
     </properties>
 
     <modules>
@@ -107,6 +108,12 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
             </dependency>
 
         </dependencies>

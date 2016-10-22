@@ -1,7 +1,7 @@
 package com.bskyb.ovp.kit.samples.mainappserver;
 
 
-import com.bskyb.ovp.kit.sample.mainapp.MainApplication;
+import com.bskyb.ovp.kit.sample.mainapp.ProducerComponent;
 import com.google.common.collect.Iterables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +28,7 @@ public class SimpleServer {
     private String topic;
 
     @Autowired
-    private MainApplication mainApplication;
+    private ProducerComponent producerComponent;
 
     public static void main(String...args) throws Exception {
         SpringApplication.run(SimpleServer.class, args);
@@ -36,12 +36,12 @@ public class SimpleServer {
 
     @RequestMapping(value = "/messages", method = RequestMethod.POST)
     public void addMessages(@RequestBody List<String> messages) {
-        mainApplication.sendSomeMessages(Iterables.toArray(messages, String.class));
+        producerComponent.sendSomeMessages(Iterables.toArray(messages, String.class));
     }
 
     @Bean
-    public MainApplication mainApplication() {
-        return new MainApplication(brokerUri, topic);
+    public ProducerComponent producerComponent() {
+        return new ProducerComponent(brokerUri, topic);
     }
 
 

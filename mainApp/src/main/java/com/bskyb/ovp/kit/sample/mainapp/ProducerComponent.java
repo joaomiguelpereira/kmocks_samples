@@ -1,11 +1,9 @@
 package com.bskyb.ovp.kit.sample.mainapp;
 
 import com.google.common.base.Verify;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.producer.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
@@ -17,15 +15,16 @@ import static org.apache.kafka.clients.producer.ProducerConfig.MAX_BLOCK_MS_CONF
 import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
 
 
-public class MainApplication {
+
+@Slf4j
+public class ProducerComponent {
 
     private final String brokerUri;
     private final String topic;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainApplication.class);
     private static final long TIMEOUT_3_SECONDS = SECONDS.toMillis(3);
 
-    public MainApplication(String brokerUri, String topic) {
+    public ProducerComponent(String brokerUri, String topic) {
         Verify.verify(StringUtils.isNotEmpty(brokerUri), "Broker URI cannot be null or empty");
         Verify.verify(StringUtils.isNotEmpty(topic), "Topic cannot be null or empty");
         this.brokerUri = brokerUri;
@@ -34,7 +33,7 @@ public class MainApplication {
 
 
     public void sendSomeMessages(String...messages) {
-        LOGGER.info("Starting the Main Application...");
+        log.info("Sending some messages");
 
         ProducerRecord[] producerRecords = Stream.of(messages)
                 .map(msgBody -> new ProducerRecord<String, String>(topic, msgBody))
@@ -45,12 +44,12 @@ public class MainApplication {
 
         try {
             for (ProducerRecord<String, String> msg : producerRecords) {
-                LOGGER.info("Sending message: {} to topic {}", msg.value(), msg.topic());
+                log.info("Sending message: {} to topic {}", msg.value(), msg.topic());
                 RecordMetadata recordMetadata = producer.send(msg).get();
-                LOGGER.info("Sent message: {} -> topic: {} - offset: {}", msg.value(), recordMetadata.topic(), recordMetadata.offset());
+                log.info("Sent message: {} -> topic: {} - offset: {}", msg.value(), recordMetadata.topic(), recordMetadata.offset());
             }
         } catch (InterruptedException | ExecutionException e) {
-            LOGGER.error("Sending messages", e);
+            log.error("Sending messages", e);
             throw new MainApplicationException(e);
         } finally {
             producer.close(1, SECONDS);
