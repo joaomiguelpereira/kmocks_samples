@@ -4,9 +4,10 @@ import com.bskyb.ovp.kafka.driver.HttpKafkaDriver;
 import com.bskyb.ovp.kafka.driver.KafkaDriver;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 
 import java.net.URI;
-
+@Ignore
 public class RemoteFunctionalTest extends FunctionalTest {
 
     //Create new Http Driver connecting to 8085

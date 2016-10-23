@@ -7,8 +7,8 @@ import org.junit.*;
 
 public class LocalFunctionalTest extends FunctionalTest {
 
-    //Create new Local Driver listening on port 9093
-    private static final KafkaDriver localKafkaDriver = new KafkaDriverBuilder().brokerPort(9093).build();
+    //Create new Local Driver listening on port 5001
+    private static final KafkaDriver localKafkaDriver = new KafkaDriverBuilder().brokerPort(5001).build();
 
     @BeforeClass
     public static void startKafkaAndCreateTopic() throws Exception {

@@ -2,13 +2,11 @@ package com.bskyb.ovp.kit.samples;
 
 import com.bskyb.ovp.kafka.driver.*;
 import com.bskyb.ovp.kit.samples.mainappserver.SimpleServer;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.ClassRule;
-import org.junit.Rule;
+import org.junit.*;
 
 import java.net.URI;
 
+@Ignore
 public class RemoteFunctionalWithRuleTest extends FunctionalTest {
 
     //Create new Local Driver listening on port 9093

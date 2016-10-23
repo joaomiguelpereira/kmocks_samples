@@ -11,8 +11,8 @@ import org.junit.Rule;
 
 public class LocalFunctionalWithRuleTest extends FunctionalTest{
 
-    //Create new Local Driver listening on port 9093
-    private static final KafkaDriver localKafkaDriver = new KafkaDriverBuilder().brokerPort(9093).build();
+    //Create new Local Driver listening on port 5001
+    private static final KafkaDriver localKafkaDriver = new KafkaDriverBuilder().brokerPort(5001).build();
 
     @ClassRule
     public static KafkaDriverStartStopRule startStopRule = new KafkaDriverStartStopRule(localKafkaDriver);
